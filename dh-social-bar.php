@@ -48,7 +48,7 @@ class DH_Social_Bar {
 	 */
 	public function __construct() {
 		// Leeeeeeroyyyyy Jenkinsssss
-
+		$this->init();
 	}
 
 	/**
@@ -57,7 +57,21 @@ class DH_Social_Bar {
 	 * @since 0.1
 	 */
 	public function init() {
-		// Do plugin initialization
+		// Do plugin initialization\
+		$this->render();;
+	}
+
+	public function render() { ?>
+
+		<div class="social-integration-bar">
+			<div class="container">
+				<p class="sib-content">
+					Social Integration Bar
+				</p>
+			</div>
+		</div>
+
+	<?php
 	}
 
 }
