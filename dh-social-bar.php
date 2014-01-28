@@ -35,6 +35,8 @@ License URI: http://www.gnu.org/licenses/gpl-3.0.html
  */
 class DH_Social_Bar {
 
+
+	private $ns = 'social-integration-bar';
 	/**
 	 * @var array Default configuration array
 	 */
@@ -47,6 +49,10 @@ class DH_Social_Bar {
 	 * @since 0.1
 	 */
 	public function __construct() {
+
+		// Define paths
+		define('SIB_PLUGIN_URL', plugin_dir_url(__FILE__));
+
 		// Leeeeeeroyyyyy Jenkinsssss
 		$this->init();
 	}
@@ -57,21 +63,39 @@ class DH_Social_Bar {
 	 * @since 0.1
 	 */
 	public function init() {
-		// Do plugin initialization\
-		$this->render();;
+		// Do plugin initialization
+
+		add_action('wp_enqueue_scripts', array($this, 'init_css'));
+		add_action('wp_enqueue_scripts', array($this, 'init_js'));
+		add_action('wp_footer', array($this, 'render'));
+
 	}
 
 	public function render() { ?>
 
-		<div class="social-integration-bar">
+		<div class="social-integration-bar sib-wrapper">
 			<div class="container">
-				<p class="sib-content">
+				<div class="sib-content">
 					Social Integration Bar
-				</p>
+					<div class="sib-toggle">
+						<a href="#">
+							<i class="fa fa-angle-down fa-3"></i>
+						</a>
+					</div>
+				</div>
 			</div>
 		</div>
 
 	<?php
+	}
+
+	public function init_css() {
+		wp_register_style('social-integration-bar', SIB_PLUGIN_URL . 'styles.css');
+		wp_enqueue_style('social-integration-bar');
+	}
+
+	public function init_js() {
+		wp_enqueue_script('jquery', SIB_PLUGIN_URL . 'js/jquery-1.11.0.min.js');
 	}
 
 }
@@ -88,4 +112,4 @@ function dh_social_bar_init() {
 }
 
 
-add_action( 'plugins_loaded', 'dh_social_bar_init', 20 );
+add_action( 'init', 'dh_social_bar_init', 20 );

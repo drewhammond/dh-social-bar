@@ -1,0 +1,33 @@
+/*
+Social Integration Bar CSS
+Note: This file will not be referenced directly. @TODO: For performance reasons, it will be placed as inline CSS.
+*/
+
+.sib-wrapper {
+	height: 50px;
+	overflow: hidden;
+	position: absolute;
+	top: 0;
+	width: 100%;
+	z-index: 500;
+	background-color: #222;
+	min-height: 50px;
+	line-height: 50px;
+}
+.sib-content {
+	display: block;
+	height: 100%;
+
+}
+.sib-toggle {
+	display: block;
+	float: right;
+	//position: absolute;
+	color: #fff;
+	height: 100%;
+}
+
+.sib-toggle a, .sib-toggle span {
+	display: block;
+	height: 100%;
+}
