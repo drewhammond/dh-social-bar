@@ -63,3 +63,7 @@ body {
 .sib-inner-wrapper {
 	background-color: #222;
 }
+
+.sib-fixed {
+	position: fixed !important;
+}
