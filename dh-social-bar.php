@@ -78,7 +78,7 @@ class DH_Social_Bar {
 			<div class="sib-inner-wrapper">
 				<div class="sib-content container">
 					<div class="sib-teaser">
-						Social Integration Bar - Expand Me!
+						<p>Social Integration Bar - Expand Me!</p>
 					</div>
 					<div class="sib-toggle">
 						<a href="#" class="fa fa-angle-down fa-3"></a>

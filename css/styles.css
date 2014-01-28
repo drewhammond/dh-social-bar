@@ -49,6 +49,10 @@ body {
 	float: left;
 }
 
+.sib-teaser p {
+	margin: 0;
+	padding: 0;
+}
 .sib-hidden {
 	clear: both;
 	display: none;
