@@ -52,6 +52,7 @@ class DH_Social_Bar {
 
 		// Define paths
 		define('SIB_PLUGIN_URL', plugin_dir_url(__FILE__));
+		define('SIB_PLUGIN_VER', '0.1');
 
 		// Leeeeeeroyyyyy Jenkinsssss
 		$this->init();
@@ -74,13 +75,16 @@ class DH_Social_Bar {
 	public function render() { ?>
 
 		<div class="social-integration-bar sib-wrapper">
-			<div class="container">
-				<div class="sib-content">
-					Social Integration Bar
+			<div class="sib-inner-wrapper">
+				<div class="sib-content container">
+					<div class="sib-teaser">
+						Social Integration Bar - Expand Me!
+					</div>
 					<div class="sib-toggle">
-						<a href="#">
-							<i class="fa fa-angle-down fa-3"></i>
-						</a>
+						<a href="#" class="fa fa-angle-down fa-3"></a>
+					</div>
+					<div class="sib-hidden">
+						<p>Hidden Text</p>
 					</div>
 				</div>
 			</div>
@@ -90,12 +94,13 @@ class DH_Social_Bar {
 	}
 
 	public function init_css() {
-		wp_register_style('social-integration-bar', SIB_PLUGIN_URL . 'styles.css');
+		wp_register_style('social-integration-bar', SIB_PLUGIN_URL . 'css/styles.css');
 		wp_enqueue_style('social-integration-bar');
 	}
 
 	public function init_js() {
 		wp_enqueue_script('jquery', SIB_PLUGIN_URL . 'js/jquery-1.11.0.min.js');
+		wp_enqueue_script('social-integration-bar', SIB_PLUGIN_URL . 'js/script.js', array('jquery'), SIB_PLUGIN_VER, true);
 	}
 
 }

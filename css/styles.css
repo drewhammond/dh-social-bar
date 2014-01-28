@@ -1,0 +1,65 @@
+/*
+Social Integration Bar CSS
+*/
+
+.sib-wrapper {
+	height: 50px;
+	position: absolute;
+	top: 0;
+	width: 100%;
+	z-index: 500;
+	background-color: #222;
+	min-height: 50px;
+	line-height: 50px;
+}
+
+body {
+	padding-top: 50px;
+}
+
+.sib-content {
+	color: #9b9b9b;
+	line-height: 50px;
+}
+
+.sib-content a {
+	color: #9b9b9b;
+}
+.sib-toggle {
+	display: block;
+	float: right;
+	height: 100%;
+	font-size: 36px;
+}
+
+.sib-toggle a {
+	display: inline-block;
+	height: 100%;
+	width: 100%;
+	color: #fff;
+}
+.sib-toggle a:hover, .sib-toggle a:active, .sib-toggle a:focus {
+	text-decoration: none !important;
+	outline: 0 none !important;
+}
+
+.sib-teaser {
+	color: #666666;
+	text-align: center;
+	float: left;
+}
+
+.sib-hidden {
+	clear: both;
+	display: none;
+	height: 600px;
+	padding-top: 32px;
+	position: relative;
+	width: 100%;
+	z-index: 999;
+	background-color: #222;
+}
+
+.sib-inner-wrapper {
+	background-color: #222;
+}
