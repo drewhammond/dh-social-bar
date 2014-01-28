@@ -1,6 +1,5 @@
 /*
 Social Integration Bar CSS
-Note: This file will not be referenced directly. @TODO: For performance reasons, it will be placed as inline CSS.
 */
 
 .sib-wrapper {
@@ -22,7 +21,6 @@ Note: This file will not be referenced directly. @TODO: For performance reasons,
 .sib-toggle {
 	display: block;
 	float: right;
-	//position: absolute;
 	color: #fff;
 	height: 100%;
 }
