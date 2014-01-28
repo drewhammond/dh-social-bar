@@ -8,30 +8,27 @@ jQuery(document).ready(function ($) {
 	var navHeight = $('nav.navbar').height();
 	var expandedHeight = (windowHeight - 50 - navHeight);
 	var fixedNavOffset = windowHeight - navHeight;
-	// Hack to track toggle status because I cant remember how to do it right with jQuery
 	var sibIsOpen = false;
-
-	// CSS classes for positioning the menu
-	$('head').append('<style>.sibFixNav { top: ' + fixedNavOffset + 'px !important; }');
-
-	console.log(windowHeight);
 
 	$('.sib-toggle > a').click(function (e) {
 		e.preventDefault();
-		sibIsOpen.togg
 
-		console.log(sibIsOpen);
+		// Hack to track toggle status because I cant remember how to do it right with jQuery
+		if (sibIsOpen) {
+			$('nav.navbar').removeClass('sib-fixed');
+			$('nav.navbar').animate({top: 0});
+			sibIsOpen = false;
+		} else {
+			$('nav.navbar').addClass('sib-fixed');
+			$('nav.navbar').animate({top: fixedNavOffset});
+			sibIsOpen = true;
+		}
 
 		$('.sib-teaser').fadeToggle();
-		$('nav.navbar').toggleClass('sib-fixed sibFixNav');
-
-		// Fix navbar to bottom of screen
-		//$('nav.navbar').css({ top: windowHeight - navHeight });
+		//$('nav.navbar').toggleClass('sib-fixed sibFixNav');
 
 		// Expand the hidden div
 		$('.sib-hidden').slideToggle('normal', function (e) {
-
-			console.log($(this));
 			// Change display;
 			$('.sib-wrapper').toggleClass('sib-fixed');
 			$('.sib-toggle > a').toggleClass('fa-angle-up').toggleClass('fa-angle-down');
