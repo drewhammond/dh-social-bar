@@ -71,3 +71,14 @@ body {
 .sib-fixed {
 	position: fixed !important;
 }
+
+
+.sib-widget-title {
+	border-bottom: 1px dashed #6E6E6E;
+	color: #FFFFFF;
+	display: block;
+	font-family: "gotham_narrowmedium",Helvetica,Arial,sans-serif;
+	font-size: 18px;
+	padding: 8px;
+	text-transform: uppercase;
+}

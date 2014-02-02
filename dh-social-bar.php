@@ -30,13 +30,15 @@ License URI: http://www.gnu.org/licenses/gpl-3.0.html
  * Class DH_Social_Bar
  *
  * @package Social Integration Bar
+ * @requires Genesis Theme for WP (studiopress.com)
  *
  * @since 0.1
  */
 class DH_Social_Bar {
 
 
-	private $ns = 'social-integration-bar';
+	private static $ns = 'social-integration-bar';
+	protected $num_widgets = 2;
 	/**
 	 * @var array Default configuration array
 	 */
@@ -52,7 +54,7 @@ class DH_Social_Bar {
 
 		// Define paths
 		define('SIB_PLUGIN_URL', plugin_dir_url(__FILE__));
-		define('SIB_PLUGIN_VER', '0.1');
+		define('SIB_PLUGIN_VER', '0.4');
 
 		// Leeeeeeroyyyyy Jenkinsssss
 		$this->init();
@@ -70,6 +72,50 @@ class DH_Social_Bar {
 		add_action('wp_enqueue_scripts', array($this, 'init_js'));
 		add_action('wp_footer', array($this, 'render'));
 
+
+		$this->register_widgets(2);
+
+
+		//$theme = new acv3_theme();
+		if (method_exists('acv3_theme', 'render_social_icons')) {
+
+		}
+
+	}
+
+	/**
+	 * Register plugin options
+	 */
+	public function register_options() {
+
+	}
+
+	/**
+	 * Register widget areas in the expanded bar area
+	 *
+	 * This function registers two widget areas inside the expanded bar div that can be
+	 * referenced from within Wordpress.
+	 *
+	 * @param int $quantity Number of widget boxes to register in the Social Integration Bar
+	 */
+	public function register_widgets($quantity = 2) {
+
+
+		for ($i=0; $i<$quantity; $i++) {
+			register_sidebar( $args = array(
+				'name' 			=> __( 'Social Integration Box ' .  ($i+1), 'marketwarp'),
+				'id' 			=> self::$ns . 'widget-area-' . $i,
+				'description' 	=> __( 'This widget area is displayed in the left hand column on the Social Integration Bar', 'marketwarp' ),
+				'class' 		=> self::$ns . '-section-' . ($i+1),
+				'before_widget' => '<li id="%1$s" class="widget %2$s list-unstyled">',
+				'after_widget'  => '</li>',
+				'before_title'  => '<p class="sib-widget-title">',
+				'after_title'   => '</p>',
+			) );
+		}
+
+		add_action( 'widgets_init', 'register_widgets' );
+
 	}
 
 	public function render() { ?>
@@ -83,8 +129,13 @@ class DH_Social_Bar {
 					<div class="sib-toggle">
 						<a href="#" class="fa fa-angle-down fa-3"></a>
 					</div>
-					<div class="sib-hidden">
-						<p>Hidden Text</p>
+					<div class="sib-hidden container">
+						<div class="col-md-6">
+							<?php dynamic_sidebar('Social Integration Box 1'); ?>
+						</div>
+						<div class="col-md-6">
+							<?php dynamic_sidebar('Social Integration Box 2'); ?>
+						</div>
 					</div>
 				</div>
 			</div>
